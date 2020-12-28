@@ -4,9 +4,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 
 use App\Classes\FactoryRobot;
+use App\Classes\MergeRobot;
 use App\Classes\Robot1;
 use App\Classes\Robot2;
-use App\Classes\MergeRobot;
 
 
 $factory = new FactoryRobot();
@@ -23,9 +23,23 @@ $mergeRobot->addRobot($factory->createRobot2(2));
 
 $factory->addType($mergeRobot);
 
-$res = reset($factory->createMergeRobot(1));
+// cant direct get factory call to reset function - got error "Only variables should be passed by reference"
+// @source https://www.php.net/manual/en/function.reset.php
+//$res = reset($factory->createMergeRobot(1));
+
+//if created single robot - factory return single object
+$res = $factory->createMergeRobot(1);
 
 //Результатом роботи методу буде мінімальна швидкість з усіх об’єднаних роботів
-echo $res->getSpeed();
+echo $res->getSpeed() . PHP_EOL;
 // Результатом роботи методу буде сума всіх ваг об’єднаних роботів
-echo $res->getWeight();
+echo $res->getWeight() . PHP_EOL;
+
+// For multiple assembled robots all working well too
+//$results = $factory->createMergeRobot(3);
+//foreach ($results as $result) {
+//    //Результатом роботи методу буде мінімальна швидкість з усіх об’єднаних роботів
+//    echo $result->getSpeed() . PHP_EOL;
+//    // Результатом роботи методу буде сума всіх ваг об’єднаних роботів
+//    echo $result->getWeight() . PHP_EOL;
+//}

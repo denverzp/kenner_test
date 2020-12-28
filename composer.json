@@ -1,0 +1,17 @@
+{
+    "name": "denverzp/kenner_test",
+    "description": "Test task for Kenner Soft Service GmbH",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Dennis Gurzhiy",
+            "email": "denver.zp@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
