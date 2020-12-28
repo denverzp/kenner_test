@@ -17,9 +17,18 @@ class MergeRobot extends Robot
      */
     private $robots = [];
 
-    public function __construct()
+    /**
+     * MergeRobot constructor.
+     * @param null $type
+     */
+    public function __construct($type = null)
     {
-        $this->type = 'MergeRobot';
+        // We can build another type MergeRobot
+        if(null !== $type ) {
+            $this->type = $type;
+        } else {
+            $this->type = 'MergeRobot';
+        }
     }
 
     /**

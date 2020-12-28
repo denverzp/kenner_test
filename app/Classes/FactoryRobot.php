@@ -6,6 +6,13 @@ namespace App\Classes;
 
 use \App\AbstractClasses\Robot;
 
+/**
+ * Class FactoryRobot
+ * @package App\Classes
+ * @property array|mixed createRobot1
+ * @property array|mixed createRobot2
+ * @property array|mixed createMergeRobot
+ */
 class FactoryRobot
 {
     /**
@@ -21,6 +28,8 @@ class FactoryRobot
         // check for robot type in registered types
         if (false === array_key_exists($robot->type, $this->types)) {
 
+            //@TODO - NOTICE - store robot details in factory $types storage
+            // haven`t any way to modify stored robot details
             $this->types[$robot->type] = $robot;
         }
 
@@ -29,7 +38,7 @@ class FactoryRobot
     /**
      * @param $name
      * @param $args
-     * @return array|null
+     * @return array|mixed|null
      */
     public function __call($name, $args)
     {
