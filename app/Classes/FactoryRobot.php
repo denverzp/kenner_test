@@ -53,7 +53,8 @@ class FactoryRobot
             // fill result array with objects
             for($i = 0; $i < (int)$args[0]; $i++){
 
-                $result[$i] = $this->types[$robotType];
+                //clone - get new object - not copy of the initial
+                $result[$i] = clone $this->types[$robotType];
             }
 
             // return array of robots or single robot - if assembled single
